@@ -1,0 +1,3 @@
+C:/Users/ozgur/GitHub/SDL_ParticleFireSimulation/cmake-build-debug/CMakeFiles/SDL_ParticleFireSimulation.dir
+C:/Users/ozgur/GitHub/SDL_ParticleFireSimulation/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ozgur/GitHub/SDL_ParticleFireSimulation/cmake-build-debug/CMakeFiles/rebuild_cache.dir
