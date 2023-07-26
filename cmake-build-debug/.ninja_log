@@ -1,3 +1,6 @@
 # ninja log v5
 5	729	7120188241937950	CMakeFiles/SDL_ParticleFireSimulation.dir/main.cpp.obj	b7efaf3abe50d90c
 729	822	7120188242830787	SDL_ParticleFireSimulation.exe	22850916f1d8caa9
+17	480	7120258783031445	build.ninja	e14978f31170927f
+4	1111	7120258795011152	CMakeFiles/SDL_ParticleFireSimulation.dir/main.cpp.obj	455ee4a6d3dae0ff
+1112	1384	7120258797702388	SDL_ParticleFireSimulation.exe	22850916f1d8caa9
