@@ -53,8 +53,14 @@ int main(int argc, char *argv[])
     // Buffer is gonna be used for storing the pixel in it.
     // We are storing pixels, cause otherwise view on the screen can be seen incorrect, irregular
     // Storing data set the pixel as convenient and useable.
-    Uint32 *buffer = new Uint32[SCREEN_HEIGHT * SCREEN_WIDTH]; // All pixels are 32 bit RGBA8888, and we have
-                                                               // SCREEN_WIDTH * SCREEN_HEIGHT pixels
+    Uint32 *buffer = new Uint32[SCREEN_HEIGHT * SCREEN_WIDTH]; // All pixels are 32 bit RGBA8888, and we have SCREEN_WIDTH * SCREEN_HEIGHT pixels                                                               SDL_UpdateTexture(texture, NULL, buffer, SCREEN_WIDTH * sizeof(Uint32)); // Update texture (pixels) via buffer (pixel container)
+
+    memset(buffer, 0xFF, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+
+    SDL_UpdateTexture(texture, nullptr, buffer, SCREEN_WIDTH * sizeof(Uint32));
+    SDL_RenderClear(renderer); // Clear renderer which render the data its stored.
+    SDL_RenderCopy(renderer, texture, nullptr, nullptr); // Fill the renderer via texture
+    SDL_RenderPresent(renderer); // Show the data that renderer holds.
 
     while(!isQuit)
     {
