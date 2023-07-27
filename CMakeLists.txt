@@ -8,7 +8,9 @@ find_package(SDL2 REQUIRED)
 include_directories( ${SDL2_INCLUDE_DIR} )
 
 message("${SDL2_INCLUDE_DIR}")
-add_executable(SDL_ParticleFireSimulation main.cpp)
+add_executable(SDL_ParticleFireSimulation main.cpp
+        Screen.cpp
+        Screen.h)
 
 target_link_libraries(SDL_ParticleFireSimulation ${SDL2_LIBRARY} )
 message("${SDL2_LIBRARY}")
