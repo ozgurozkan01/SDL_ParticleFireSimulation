@@ -3,6 +3,7 @@
 //
 
 #include "Screen.h"
+#include <iostream>
 
 Screen::Screen() :
     window(nullptr), renderer(nullptr), texture(nullptr), buffer(nullptr) // initializer list method
@@ -60,19 +61,6 @@ bool Screen::init()
 
     memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
 
-
-    for (int i = 0; i < SCREEN_HEIGHT * SCREEN_WIDTH; i++)
-    {
-        // 0xFF-FF-FF-FF
-        // hex, Red, Green , Blue, Alpha
-        buffer[i] = 0xFFFFFFFF - (i * 25);
-    }
-
-    SDL_UpdateTexture(texture, nullptr, buffer, SCREEN_WIDTH * sizeof(Uint32));
-    SDL_RenderClear(renderer); // Clear renderer which render the data its stored.
-    SDL_RenderCopy(renderer, texture, nullptr, nullptr); // Fill the renderer via texture
-    SDL_RenderPresent(renderer); // Show the data that renderer holds.
-
     return true;
 }
 
@@ -97,4 +85,31 @@ void Screen::close()
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window); // we need to delete pointer, otherwise it keeps going to allocate memory
     SDL_Quit();
+}
+
+void Screen::setPixel(int xCord, int yCord, Uint8 red, Uint8 green, Uint8 blue)
+{
+    // Pixel is 32 bit, Cause pixel has 3 colors and 1 opacity-transparency
+    // Color is 8 bit, Cause color can be index between 0-255
+    Uint32 color = 0;
+
+    color += red; // 0xFF = color
+    color <<= 8;
+    color += green; // 0xFF4D = color
+    color <<= 8;
+    color += blue; // 0xFF4D8A = color
+    color <<= 8;
+    color += 0xFF; // 0xFF4D8AFF = color
+
+    // We have as much width as height. So yCord represents particular point of Height.
+    // xCord represents particular point of Width.
+    buffer[(yCord * SCREEN_WIDTH) + xCord] = color;
+}
+
+void Screen::update()
+{
+    SDL_UpdateTexture(texture, nullptr, buffer, SCREEN_WIDTH * sizeof(Uint32));
+    SDL_RenderClear(renderer); // Clear renderer which render the data its stored.
+    SDL_RenderCopy(renderer, texture, nullptr, nullptr); // Fill the renderer via texture
+    SDL_RenderPresent(renderer); // Show the data that renderer holds.
 }
