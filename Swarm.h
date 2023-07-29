@@ -1,7 +1,3 @@
-//
-// Created by ozgur on 7/29/2023.
-//
-
 #ifndef SDL_PARTICLEFIRESIMULATION_SWARM_H
 #define SDL_PARTICLEFIRESIMULATION_SWARM_H
 

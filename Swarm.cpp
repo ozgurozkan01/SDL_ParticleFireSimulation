@@ -1,7 +1,3 @@
-//
-// Created by ozgur on 7/29/2023.
-//
-
 #include "Swarm.h"
 
 Swarm::Swarm()
