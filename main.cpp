@@ -8,11 +8,6 @@
 
 int main(int argc, char *argv[])
 {
-
-    int const * value;
-    const int * value2;
-    int * const value3 = nullptr;
-
     Screen screen;
     Swarm swarm;
 
@@ -51,10 +46,10 @@ int main(int argc, char *argv[])
         {
             Particle particle = particles[i];
 
-            int xCord = (particle.getX() + 1 ) * Screen::SCREEN_WIDTH / 2;
-            int yCord = (particle.getY() + 1 ) * Screen::SCREEN_HEIGHT / 2;
+            int x = static_cast<int>(particle.xCord * Screen::SCREEN_WIDTH);
+            int y = static_cast<int>(particle.yCord* Screen::SCREEN_HEIGHT);
 
-            screen.setPixel(xCord, yCord, red, green, blue);
+            screen.setPixel(x, y, red, green, blue);
         }
 
         screen.update();
