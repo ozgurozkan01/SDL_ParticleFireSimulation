@@ -1,10 +1,5 @@
-//
-// Created by ozgur on 7/29/2023.
-//
-
 #include "Particle.h"
 #include <stdlib.h>
-#include <iostream>
 
 Particle::Particle()
 {
