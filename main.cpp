@@ -56,16 +56,6 @@ int main(int argc, char *argv[])
 
             screen.setPixel(xCord, yCord, red, green, blue);
         }
-/*
-
-        for (int yCord = 0; yCord < Screen::SCREEN_HEIGHT; ++yCord)
-        {
-            for (int xCord = 0; xCord < Screen::SCREEN_WIDTH; ++xCord)
-            {
-                screen->setPixel(xCord, yCord, red, green, blue);
-            }
-        }
-*/
 
         screen.update();
 
