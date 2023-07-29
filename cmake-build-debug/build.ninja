@@ -63,6 +63,20 @@ build CMakeFiles/SDL_ParticleFireSimulation.dir/Screen.cpp.obj: CXX_COMPILER__SD
   OBJECT_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
 
+build CMakeFiles/SDL_ParticleFireSimulation.dir/Particle.cpp.obj: CXX_COMPILER__SDL_ParticleFireSimulation_unscanned_Debug C$:/Users/ozgur/GitHub/SDL_ParticleFireSimulation/Particle.cpp || cmake_object_order_depends_target_SDL_ParticleFireSimulation
+  DEP_FILE = CMakeFiles\SDL_ParticleFireSimulation.dir\Particle.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/include/SDL2
+  OBJECT_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
+  OBJECT_FILE_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
+
+build CMakeFiles/SDL_ParticleFireSimulation.dir/Swarm.cpp.obj: CXX_COMPILER__SDL_ParticleFireSimulation_unscanned_Debug C$:/Users/ozgur/GitHub/SDL_ParticleFireSimulation/Swarm.cpp || cmake_object_order_depends_target_SDL_ParticleFireSimulation
+  DEP_FILE = CMakeFiles\SDL_ParticleFireSimulation.dir\Swarm.cpp.obj.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/include/SDL2
+  OBJECT_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
+  OBJECT_FILE_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SDL_ParticleFireSimulation
@@ -71,7 +85,7 @@ build CMakeFiles/SDL_ParticleFireSimulation.dir/Screen.cpp.obj: CXX_COMPILER__SD
 #############################################
 # Link the executable SDL_ParticleFireSimulation.exe
 
-build SDL_ParticleFireSimulation.exe: CXX_EXECUTABLE_LINKER__SDL_ParticleFireSimulation_Debug CMakeFiles/SDL_ParticleFireSimulation.dir/main.cpp.obj CMakeFiles/SDL_ParticleFireSimulation.dir/Screen.cpp.obj | C$:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2.dll.a
+build SDL_ParticleFireSimulation.exe: CXX_EXECUTABLE_LINKER__SDL_ParticleFireSimulation_Debug CMakeFiles/SDL_ParticleFireSimulation.dir/main.cpp.obj CMakeFiles/SDL_ParticleFireSimulation.dir/Screen.cpp.obj CMakeFiles/SDL_ParticleFireSimulation.dir/Particle.cpp.obj CMakeFiles/SDL_ParticleFireSimulation.dir/Swarm.cpp.obj | C$:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2main.a C$:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2.dll.a
   FLAGS = -g
   LINK_LIBRARIES = -lmingw32  -mwindows  C:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2main.a  C:/Users/ozgur/SDL2-2.28.1/x86_64-w64-mingw32/lib/libSDL2.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SDL_ParticleFireSimulation.dir

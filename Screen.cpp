@@ -93,6 +93,11 @@ void Screen::setPixel(int xCord, int yCord, Uint8 red, Uint8 green, Uint8 blue)
     // Color is 8 bit, Cause color can be index between 0-255
     Uint32 color = 0;
 
+    if (xCord < 0 || xCord >= SCREEN_WIDTH || yCord < 0 || yCord >= SCREEN_HEIGHT)
+    {
+        return;
+    }
+
     color += red; // 0xFF = color
     color <<= 8;
     color += green; // 0xFF4D = color
@@ -101,7 +106,8 @@ void Screen::setPixel(int xCord, int yCord, Uint8 red, Uint8 green, Uint8 blue)
     color <<= 8;
     color += 0xFF; // 0xFF4D8AFF = color
 
-    // We have as much width as height. So yCord represents particular point of Height.
+    // We have as much width as height.
+    // yCord represents particular point of Height.
     // xCord represents particular point of Width.
     buffer[(yCord * SCREEN_WIDTH) + xCord] = color;
 }
