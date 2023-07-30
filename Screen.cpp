@@ -119,3 +119,8 @@ void Screen::update()
     SDL_RenderCopy(renderer, texture, nullptr, nullptr); // Fill the renderer via texture
     SDL_RenderPresent(renderer); // Show the data that renderer holds.
 }
+
+void Screen::clear()
+{
+    memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+}
