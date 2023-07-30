@@ -4,11 +4,19 @@
 
 class Particle {
 
-public:
+private:
     double xCord;
     double yCord;
 
+    double xSpeed;
+    double ySpeed;
+
 public:
+
+    double getX() { return xCord; };
+    double getY() { return yCord; };
+
+    void update();
 
     Particle();
     ~Particle();
