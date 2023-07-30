@@ -1,6 +1,5 @@
 #include <SDL.h>
-#include <iostream>
-#include <stdlib.h>
+#include <time.h>
 #include <math.h>
 #include "Screen.h"
 #include "Swarm.h"
@@ -13,10 +12,8 @@ int main(int argc, char *argv[])
 
     srand(time(nullptr));
 
-
     if (!screen.init())
     {
-        std::cout << "Error initialising SDL!!" << std::endl;
         return -1;
     }
 
@@ -24,6 +21,9 @@ int main(int argc, char *argv[])
     {
 
         int elapsedTime = SDL_GetTicks(); // Time between program start and end or running time
+
+        screen.clear();
+        swarm.update();
 
         /*
          * sin(x) : returning value between -1 and 1
@@ -46,8 +46,8 @@ int main(int argc, char *argv[])
         {
             Particle particle = particles[i];
 
-            int x = static_cast<int>(particle.xCord * Screen::SCREEN_WIDTH);
-            int y = static_cast<int>(particle.yCord* Screen::SCREEN_HEIGHT);
+            int x = static_cast<int>(particle.getX() * Screen::SCREEN_WIDTH);
+            int y = static_cast<int>(particle.getY()* Screen::SCREEN_HEIGHT);
 
             screen.setPixel(x, y, red, green, blue);
         }
