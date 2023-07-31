@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
         int elapsedTime = SDL_GetTicks(); // Time between program start and end or running time
 
         screen.clear();
-        swarm.update();
+        swarm.update(elapsedTime);
 
         /*
          * sin(x) : returning value between -1 and 1
@@ -46,8 +46,10 @@ int main(int argc, char *argv[])
         {
             Particle particle = particles[i];
 
-            int x = static_cast<int>(particle.getX() * Screen::SCREEN_WIDTH);
-            int y = static_cast<int>(particle.getY()* Screen::SCREEN_HEIGHT);
+            // Screen borders scaled by 0 and 1. For this reason, 0.5 center of the screen.
+            // If we want to place the particle on border, we need a value 0 or 1
+            int x = static_cast<int>((particle.getX() + 0.5) * Screen::SCREEN_WIDTH / 2);
+            int y = static_cast<int>((particle.getY() - 0.5 )* Screen::SCREEN_WIDTH / 2 + Screen::SCREEN_HEIGHT / 2);
 
             screen.setPixel(x, y, red, green, blue);
         }

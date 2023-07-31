@@ -1,19 +1,22 @@
 #include "Particle.h"
 #include <stdlib.h>
-#include <iostream>
+#include <math.h>
 
-Particle::Particle()
+Particle::Particle() : xCord(0.5), yCord(0.5)
 {
-    xCord = (1.0 * rand()) / RAND_MAX; // number which rand function returns / max number which rand function can return
-    yCord = (1.0 * rand()) / RAND_MAX; // between 0-1;
-
-    xSpeed = 0.001 * ((2.0 * rand()) / RAND_MAX - 1);
-    ySpeed = 0.001 * ((2.0 * rand()) / RAND_MAX - 1);
+    direction = (2 * M_PI * rand())/RAND_MAX;
+    speed = (0.0005 * rand()) / RAND_MAX;
 }
 
-void Particle::update()
+void Particle::update(int deltaTime)
 {
-    xCord += xSpeed;
+    double xSpeed = speed * cos(direction); // cos(direction) gives us x component of direction
+    double ySpeed = speed * sin(direction); // sin(direction) gives us y component of direction
+
+    xCord += xSpeed * deltaTime;
+    yCord += ySpeed * deltaTime;
+
+    /*xCord += xSpeed;
     yCord += ySpeed;
 
     // 0 and 1 is border check values. We have checked in here,
@@ -26,7 +29,7 @@ void Particle::update()
     if (yCord <= 0 || yCord >= 1.0)
     {
         ySpeed = -ySpeed;
-    }
+    }*/
 }
 
 Particle::~Particle()

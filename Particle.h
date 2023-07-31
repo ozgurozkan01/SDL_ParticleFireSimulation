@@ -8,15 +8,15 @@ private:
     double xCord;
     double yCord;
 
-    double xSpeed;
-    double ySpeed;
+    double speed;
+    double direction;
 
 public:
 
     double getX() { return xCord; };
     double getY() { return yCord; };
 
-    void update();
+    void update(int deltaTime);
 
     Particle();
     ~Particle();
