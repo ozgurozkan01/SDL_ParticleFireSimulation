@@ -20,6 +20,7 @@ void Particle::init()
 
 void Particle::update(int deltaTime)
 {
+    // Increase the radion (angle), so direction will change in every frame
     direction += deltaTime * 0.0003;
 
     double xSpeed = speed * cos(direction); // cos(direction) gives us x component of direction
