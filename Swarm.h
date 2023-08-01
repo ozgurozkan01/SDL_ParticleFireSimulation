@@ -6,7 +6,7 @@
 
 class Swarm {
 public:
-    const static int NPARTICLES = 2000; // const values must initialize where it is defined.
+    const static int NPARTICLES = 5000; // const values must initialize where it is defined.
 private:
 
     Particle *particles;

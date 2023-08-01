@@ -11,6 +11,8 @@ private:
     double speed;
     double direction;
 
+    void init();
+
 public:
 
     double getX() { return xCord; };
