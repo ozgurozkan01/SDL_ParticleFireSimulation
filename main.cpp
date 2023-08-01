@@ -4,6 +4,7 @@
 #include "Screen.h"
 #include "Swarm.h"
 #include "Particle.h"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
 
         int elapsedTime = SDL_GetTicks(); // Time between program start and end or running time
 
-        screen.clear();
+        //screen.clear();
         swarm.update(elapsedTime);
 
         /*
@@ -54,6 +55,7 @@ int main(int argc, char *argv[])
             screen.setPixel(x, y, red, green, blue);
         }
 
+        screen.boxBlur();
         screen.update();
 
         if (!screen.processEvent())

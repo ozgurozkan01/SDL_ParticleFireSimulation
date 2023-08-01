@@ -17,6 +17,7 @@ private:
     SDL_Renderer *renderer;
     SDL_Texture *texture;
     Uint32 *buffer;
+    Uint32 *bufferBlur;
 
 public:
     Screen();
@@ -26,7 +27,7 @@ public:
     void setPixel(int xCord, int yCord, Uint8 red, Uint8 green, Uint8 blue);
     void update();
     void close();
-    void clear();
+    void boxBlur();
 };
 
 

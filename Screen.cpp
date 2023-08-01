@@ -6,7 +6,7 @@
 #include <iostream>
 
 Screen::Screen() :
-    window(nullptr), renderer(nullptr), texture(nullptr), buffer(nullptr) // initializer list method
+    window(nullptr), renderer(nullptr), texture(nullptr), buffer(nullptr), bufferBlur(nullptr)// initializer list method
 {
 
 }
@@ -58,8 +58,10 @@ bool Screen::init()
     // We are storing pixels, cause otherwise view on the screen can be seen incorrect, irregular
     // Storing data set the pixel as convenient and useable without breakdown.
     buffer = new Uint32[SCREEN_HEIGHT * SCREEN_WIDTH]; // All pixels are 32 bit RGBA8888, and we have SCREEN_WIDTH * SCREEN_HEIGHT pixels                                                               SDL_UpdateTexture(texture, NULL, buffer, SCREEN_WIDTH * sizeof(Uint32)); // Update texture (pixels) via buffer (pixel container)
+    bufferBlur = new Uint32[SCREEN_HEIGHT * SCREEN_WIDTH];
 
     memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+    memset(bufferBlur, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
 
     return true;
 }
@@ -81,6 +83,7 @@ bool Screen::processEvent()
 void Screen::close()
 {
     delete [] buffer;
+    delete [] bufferBlur;
     SDL_DestroyTexture(texture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window); // we need to delete pointer, otherwise it keeps going to allocate memory
@@ -120,7 +123,57 @@ void Screen::update()
     SDL_RenderPresent(renderer); // Show the data that renderer holds.
 }
 
-void Screen::clear()
+void Screen::boxBlur()
 {
-    memset(buffer, 0, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+    Uint32 *temp = buffer;
+    buffer = bufferBlur;
+    bufferBlur = temp;
+
+    for (int y = 0; y < SCREEN_HEIGHT; y++)
+    {
+        for (int x = 0; x < SCREEN_WIDTH; x++)
+        {
+            /* 3x3 filter is a filter used to take the pixel values of 8 pixels neighbouring a pixel and calculate the average.
+             * 0 0 0
+             * 0 1 0
+             * 0 0 0
+             * */
+
+            // Store the color amount of 9 neighbooring colors
+            int redTotal = 0;
+            int greenTotal = 0;
+            int blueTotal = 0;
+
+
+            // To navigate the 3x3 filter
+            for (int row = -1; row <= 1; row++)
+            {
+                for (int col = -1; col <= 1; col++)
+                {
+                    int currentX = x + col;
+                    int currentY = y + row;
+
+                    if (currentX >= 0 && currentX < SCREEN_WIDTH && currentY >= 0 && currentY < SCREEN_HEIGHT)
+                    {
+                        Uint32 color = bufferBlur[currentY * SCREEN_WIDTH + currentX];
+
+                        // Bit shifting and then store 8 bit for colors
+                        Uint8 red = color >> 24;
+                        Uint8 green = color >> 16;
+                        Uint8 blue = color >> 8;
+
+                        redTotal += red;
+                        greenTotal += green;
+                        blueTotal += blue;
+                    }
+                }
+            }
+
+            Uint8 red = redTotal / 9;
+            Uint8 green = greenTotal / 9;
+            Uint8 blue = blueTotal / 9;
+
+            setPixel(x, y, red, green, blue);
+        }
+    }
 }
