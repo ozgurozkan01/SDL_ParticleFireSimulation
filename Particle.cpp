@@ -34,25 +34,11 @@ void Particle::update(int deltaTime)
         init();
     }
 
+    // Increases random distribution
     if (rand() < RAND_MAX / 100)
     {
         init();
     }
-
-    /*xCord += xSpeed;
-    yCord += ySpeed;
-
-    // 0 and 1 is border check values. We have checked in here,
-    // We checked if the particle crossed the border.
-    if (xCord <= 0 || xCord >= 1.0)
-    {
-        xSpeed = -xSpeed;
-    }
-
-    if (yCord <= 0 || yCord >= 1.0)
-    {
-        ySpeed = -ySpeed;
-    }*/
 }
 
 Particle::~Particle()
