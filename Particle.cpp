@@ -34,6 +34,11 @@ void Particle::update(int deltaTime)
         init();
     }
 
+    if (rand() < RAND_MAX / 100)
+    {
+        init();
+    }
+
     /*xCord += xSpeed;
     yCord += ySpeed;
 
